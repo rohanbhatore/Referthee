@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <login></login> -->
+    <app-header></app-header>
     <home></home>
   </div>
 </template>
@@ -8,13 +8,13 @@
 
 <script>
 import Home from './components/Home'
-import Login from './components/Login'
+import AppHeader from './components/AppHeader'
 
 export default {
   name: 'app',
   components: {
     Home,
-    Login,
+    AppHeader,
   },
 };
 </script>
