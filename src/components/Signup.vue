@@ -2,6 +2,7 @@
 <div class="ev-signup">
  This is the signup
 </div>
+<router-view></router-view>
 </template>
 
 <script>

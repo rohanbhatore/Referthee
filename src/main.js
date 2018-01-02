@@ -7,16 +7,24 @@ import VueSocial from '@blocklevel/vue-social'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import router from './router'
+import LoadScript from 'vue-plugin-load-script';
 
-Vue.use(VueResource)
-Vue.config.productionTip = false
+
+export const bus = new Vue();
+
+
+Vue.use(VueResource);
+Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
-Vue.use(Router)
+Vue.use(Router);
+Vue.use(LoadScript);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router: router,
+  router,
+  components: { App },
   template: '<App/>',
-  components: { App }
 })
+
+	
