@@ -1,7 +1,7 @@
 {
-  "name": "referworthy_linkedin",
+  "name": "referworthy01",
   "version": "1.0.0",
-  "description": "add html, css and linkedin button",
+  "description": "Login with linkedIn",
   "author": "Rohan Lakshit Harsh Saurabh",
   "private": true,
   "scripts": {
