@@ -1,204 +1,93 @@
 <template>
-  <div v-if = '!routeToRequest' name="home">
-    <div class = "container">
-      <b-jumbotron header="Get Recommended" lead="Get recommendations from your colleagues and share them on Linkedin or with your job application!" align = "center"></b-jumbotron>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Share the details of your recommender and we notify him with a questionnaire.</h4><br>
-                <router-link v-on:click.native = "onRequestRecoClick()" to = "/writereco" tag = "b-button">Write a Reco</router-link>
+  <body class="parallax">
+    <div name="home"  style = "padding-top: 60px;">
+      <b-jumbotron bg-variant="white" text-variant="dark"  align="center" class="bg-transparent" style="padding:19px 10px 10px 1px">
+        <template slot="header">
+          <pre class="display-2" style="color:white; font-family:Montserrat;">Get recommended!</pre>
+        </template>
+        <template slot="lead">
+          <h5 style="color:white; font-family:Montserrat;">Add credibility to your profile with a recommendation</h5>
+        </template>
+        <hr class="my-4" width="40%" > 
+        <pre style="color:white; font-size: 21px; font-family:Montserrat;" align="center">A recommendation from your supervisor or peer makes you twice
+         as likely to land a job within one month 
+
+         As a freelancer or consultant, positive recommendations significantly
+         increase your chances to get new projects      
+       </pre> 
+       <hr class="my-2" width="40%" >
+       <!-- middle content-->
+       <b-container class="bv-example-row" style="padding:0px 0px 0px 0px" >
+        <b-row class="justify-content-md-center bg-transparent outline-*">
+          <b-col col lg="5" class="bg-transparent border-white" style="border:transparent">
+           <div class="container" align="center">
+            <p style="color:white; font-size:21px; font-family:Montserrat">Share the details of your recommender and we notify him with a questionnaire.</p><br>
+            <router-link  v-on:click.native = "onRequestRecoClick()" to = "/user-profile" tag="b-button" type="button"  class="btn btn-success btn-block button3"><strong> REQUEST RECOMMENDATION</strong></router-link>
           </div>
+        </b-col>
+        <b-col cols="12" md="auto" class="bg-transparent "><pre></pre> </b-col>
+        <b-col col lg="5" class="bg-transparent" style="border:transparent">
+         <div class="container" align="center">
+          <p style="color:white; font-size:21px; font-family:Montserrat semi bold">Write a recommendation for someone you care about and earn good karma :)</p><br>
+          <router-link v-on:click.native = "onRequestRecoClick()" to = "/user-profile" tag = "b-button" type="button"  class="btn btn-success btn-block button3"><strong> WRITE RECOMMENDATION</strong></router-link>
         </div>
-      </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-block">
-              <h4 class="card-title">Write a recommendation for someone you care about and earn good karma :)</h4><br>
-                <router-link  v-on:click.native = "onRequestRecoClick()" to = "/requestreco" tag = "b-button">Request a Reco</router-link>
-          </div>
-        </div>
-      </div>
-    </div>    
-    </div>
-</div>
-<div v-else name = "home">
-  <div class = "container">
-  <body style="background-image: url(https://s10.postimg.org/ki2n9yld5/imageedit_3_8721075508.gif);">
- <b-container class="bv-example-row ">
-    <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-        <b-col cols="12" md="auto" >
-         <div style="padding:20px">
-          <b-img src="https://lorempixel.com/100/100/" fluid alt="Responsive image" />
-         </div>
-        </b-col>
-        <b-col cols="12" md="auto">
-         <pre style="padding:2px; color:white" align="center">
-          Vikas Bansal
-          VP, Products at Flipkart
-         </pre>
-        </b-col>
-        <b-col cols="12" md="auto">
-          <div style="padding:20px" >
-          <br><br>
-            <b-button :pressed="false" variant="success">RECOMMEND ME!</b-button>
-          </div>
-        </b-col>
-    </b-row>
- </b-container>
-<!--middle secctionm-->
- <b-container class="bv-example-row">
-    <b-row align-h="center" >
-        <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Traits people use to describe Vikas:-</b-col>
-        <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
-        <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
-    </b-row>
- </b-container>
-<!--second part-->
- <b-container class="bv-example-row ">
-    <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-      <b-col cols="12" md="auto" class="bg-transparent border-white" style="border:transparent"> 
-       <b-row>
-        <b-col>
-          <b-button variant="outline-success">Not Disabled
-          </b-button>
-        </b-col>
-        <b-col>
-          <b-button variant="outline-success">Not Disabled
-          </b-button>
-        </b-col>
-        <b-col>
-          <b-button variant="outline-success">Not Disabled
-          </b-button>
-        </b-col>
-        <b-col>
-          <b-button variant="outline-success">Not Disabled
-          </b-button>
-        </b-col>
-        <b-col>
-          <b-button variant="outline-success">Not Disabled
-          </b-button> 
-        </b-col>   
-      </b-row>
-     </b-col>
-    </b-row> 
- </b-container>
- <hr width="20%">
- <!--third card-->
- <b-container class="bv-example-row">
-    <b-row align-h="center" >
-        <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Received recommendations (3)</b-col>
-        <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
-        <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
-    </b-row>
- </b-container>
-<!--4th part-->
- <b-container class="bv-example-row ">
-   <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-        <b-col cols="6">
-         <pre style="padding:2px; color:white" align="center">
-         Vikas Bansal
-         VP, Products at Flipkart
-         </pre>
-        </b-col>
-        <b-col cols="2" >
-         <div style="padding:20px">
-         <b-img src="https://lorempixel.com/100/100/" fluid alt="Responsive image" />
-         </div>
-        </b-col>  
-    </b-row>
- </b-container>
-<!--5th part-->
- <b-container class="bv-example-row ">
-    <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-      <b-col cols="8">
-        <pre style="padding:2px; color:white" align="center">
-        Vikas Bansal
-        VP, Products at Flipkart
-        </pre>
       </b-col>
     </b-row>
- </b-container>
-<!--last container-->
- <b-container class="bv-example-row ">
-    <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-       <b-col cols="4">
-        <div style="padding:20px">
-         ding ding
-        </div>
-       </b-col>
-       <b-col cols="4" >
-        <div style="padding:20px">
-         ding ding
-        </div>
-       </b-col>  
-    </b-row>
- </b-container>
-</body>
+  </b-container>
+</b-jumbotron>
 </div>
-  </div>
-
+</body>
 </template>
 
 <script>
-import {bus} from '../main';
+import axios from 'axios'
 
 export default {
   name: 'home',
-  props: ['loggedInUser'],
+  props: [''],
   components: {
   },
   data(){
-
-    return {
-      profileDetails:{
-        id: "",
-        firstName: "",
-        lastName: "",
-        emailAddress: ""
-      },
-      routeToRequest: false
-  }
+    return {   
+    }
   },
+  props: [''],
 
-  /*updated(){
-    this.routeToRequest = false;
-    console.log("updated routerequest : "+this.routeToRequest);
-  },*/
-  beforeMount(){
-    this.routeToRequest = false;
-    console.log("beffore mount router request :" +this.routeToRequest);
-  },
+  mounted(){
+         //API call to get the user details to be rendered on profile page
+         axios
+         .get('https://referworthyintern.herokuapp.com/details/1')
+         .then((response) => {
+          this.profileDetails = JSON.stringify(response);
+          console.log(this.profileDetails);
+          this.$store.commit('UPDATE_USER', this.profileDetails)
+          console.log("mounted vala" +this.$store.state.userDetails)
+        })
+         .catch((response)=>{
+          console.log("user details mein error aa gaya");
+        })
+       },
 
-  
+       methods: {
 
-  methods: {
-    onRequestRecoClick: function(){
-      this.routeToRequest = this.$parent.$options.methods.callThis();
-      if(!this.routeToRequest){
-        this.$parent.$options.methods.nowCallThis(); 
-
-        //this.changeRouteToRequest();   
+        onRequestRecoClick: function(){
+          var that = this;
+          console.log(that);
+          var loggedInUser = this.$parent.$options.methods.callThis(that);      
+          }    
+        }
       }
-    },
+      </script>
 
-    listenToEvent: function(){
-      if(this.routeToRequest){
-        bus.$on('handleRoute', this.changeRouteToRequestToFalse());
+      <style>
+      .button3{
+        /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
+        padding: 10px 50px; background-color:#114539; border-radius: 30px;  border: 1px solid #114539; width:80%/*;"*/
       }
-      else if(!this.routeToRequest){
-      bus.$on('linkedinAuthDone', this.changeRouteToRequestToTrue());
+      .button3:hover {
+        font-size: 15px;
+        background-color: #3EC2A2;
+        border: 1px solid #3EC2A2;
+
       }
-},
-    
-  changeRouteToRequestToTrue: function(){
-    this.routeToRequest = true;
-    console.log("chanfgw rount resd true :" +this.routeToRequest)
-  },
-  changeRouteToRequestToFalse: function(){
-    this.routeToRequest = false;
-    console.log("chanfgw rount resd false :" +this.routeToRequest)
-  }
-}
-}
-</script>
+      </style>
