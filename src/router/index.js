@@ -36,8 +36,8 @@ const router = new Router({
 {
   path: '/user-profile',
   name: 'user-profile',
-  component: UserProfile
- /* beforeEnter: (to, from, next) => {
+  component: UserProfile,
+  /*beforeEnter: (to, from, next) => {
     var login = router.app.$options.store.state.loggedIn
     console.log("user profikle vala" +login)
 
@@ -50,8 +50,9 @@ const router = new Router({
         next({
           path: '/home',
         })
-      }*/
-  }
+      }
+  }*/
+}
 ]
 })
 
