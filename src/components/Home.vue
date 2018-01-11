@@ -53,27 +53,43 @@ export default {
   },
   props: [''],
 
-  mounted(){
+  beforeMount(){
          //API call to get the user details to be rendered on profile page
-         axios
+         /*axios
          .get('https://referworthyintern.herokuapp.com/details/1')
          .then((response) => {
-          this.profileDetails = JSON.stringify(response);
+          this.profileDetails = response;
           console.log(this.profileDetails);
           this.$store.commit('UPDATE_USER', this.profileDetails)
           console.log("mounted vala" +this.$store.state.userDetails)
         })
          .catch((response)=>{
           console.log("user details mein error aa gaya");
-        })
+        })*/
        },
 
        methods: {
 
         onRequestRecoClick: function(){
           var that = this;
-          console.log(that);
-          var loggedInUser = this.$parent.$options.methods.callThis(that);
+          //console.log(that);
+
+
+          //API call to get the user details to be rendered on profile page
+         axios
+         .get('https://referworthyintern.herokuapp.com/details/1')
+         .then((response) => {
+          this.profileDetails = response;
+          console.log(this.profileDetails);
+          this.$store.commit('UPDATE_USER', this.profileDetails)
+          this.$store.commit('UPDATE_FIRSTNAME', this.profileDetails.data.firstName)
+          console.log("mounted vala" +this.$store.state.userDetails)
+        })
+         .catch((response)=>{
+          console.log("user details mein error aa gaya");
+        })
+
+        var loggedInUser = this.$parent.$options.methods.callThis(that);
           }
         }
       }
