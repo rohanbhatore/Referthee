@@ -3,32 +3,32 @@
     <div name="home"  style = "padding-top: 60px;">
       <b-jumbotron bg-variant="white" text-variant="dark"  align="center" class="bg-transparent" style="padding:19px 10px 10px 1px">
         <template slot="header">
-          <pre class="display-2" style="color:white; font-family:Montserrat;">Get recommended!</pre>
+          <pre class="display-2" style="color:white; font-family:Arial;">Get recommended!</pre>
         </template>
         <template slot="lead">
-          <h5 style="color:white; font-family:Montserrat;">Add credibility to your profile with a recommendation</h5>
+          <h5 style="color:white; font-family:Exo;">Add credibility to your profile with a recommendation</h5>
         </template>
-        <hr class="my-4" width="40%" > 
-        <pre style="color:white; font-size: 21px; font-family:Montserrat;" align="center">A recommendation from your supervisor or peer makes you twice
-         as likely to land a job within one month 
+        <hr class="my-4" width="40%" >
+        <pre style="color:white; font-size: 25px; font-family:Exo;" align="center">A recommendation from your supervisor or peer makes you twice
+         as likely to land a job within one month
 
          As a freelancer or consultant, positive recommendations significantly
-         increase your chances to get new projects      
-       </pre> 
+         increase your chances to get new projects
+       </pre>
        <hr class="my-2" width="40%" >
        <!-- middle content-->
        <b-container class="bv-example-row" style="padding:0px 0px 0px 0px" >
         <b-row class="justify-content-md-center bg-transparent outline-*">
           <b-col col lg="5" class="bg-transparent border-white" style="border:transparent">
            <div class="container" align="center">
-            <p style="color:white; font-size:21px; font-family:Montserrat">Share the details of your recommender and we notify him with a questionnaire.</p><br>
+            <p style="color:white; font-size:21px; font-family:Arial">Share the details of your recommender and we notify him with a questionnaire.</p><br>
             <router-link  v-on:click.native = "onRequestRecoClick()" to = "/user-profile" tag="b-button" type="button"  class="btn btn-success btn-block button3"><strong> REQUEST RECOMMENDATION</strong></router-link>
           </div>
         </b-col>
         <b-col cols="12" md="auto" class="bg-transparent "><pre></pre> </b-col>
         <b-col col lg="5" class="bg-transparent" style="border:transparent">
          <div class="container" align="center">
-          <p style="color:white; font-size:21px; font-family:Montserrat semi bold">Write a recommendation for someone you care about and earn good karma :)</p><br>
+          <p style="color:white; font-size:21px; font-family:Arial">Write a recommendation for someone you care about and earn good karma :)</p><br>
           <router-link v-on:click.native = "onRequestRecoClick()" to = "/user-profile" tag = "b-button" type="button"  class="btn btn-success btn-block button3"><strong> WRITE RECOMMENDATION</strong></router-link>
         </div>
       </b-col>
@@ -48,7 +48,7 @@ export default {
   components: {
   },
   data(){
-    return {   
+    return {
     }
   },
   props: [''],
@@ -73,7 +73,7 @@ export default {
         onRequestRecoClick: function(){
           var that = this;
           //console.log(that);
-          
+
 
           //API call to get the user details to be rendered on profile page
          axios
@@ -87,10 +87,10 @@ export default {
         })
          .catch((response)=>{
           console.log("user details mein error aa gaya");
-        }) 
+        })
 
-        var loggedInUser = this.$parent.$options.methods.callThis(that);     
-          }    
+        var loggedInUser = this.$parent.$options.methods.callThis(that);
+          }
         }
       }
       </script>
