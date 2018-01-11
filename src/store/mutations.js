@@ -6,6 +6,10 @@ export const UPDATE_USERLOGIN = function(state, loggedInUser){
   state.loggedIn = loggedInUser;
 }
 
+export const UPDATE_FIRSTNAME = function(state, fetched){
+	state.firstName = fetched;
+}
+
 
 /*export const mutations = {
   setUser (state, profileDetails) {

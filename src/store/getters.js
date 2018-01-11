@@ -1,7 +1,11 @@
-export const userDetails = function(state){
+export const getUserDetails = function(state){
  state.userDetails
 }
 
-export const loggedIn = function(state){
+export const getLoggedIn = function(state){
  state.loggedIn
 } 
+
+export const getFirstName = function(state){
+ state.firstName
+}

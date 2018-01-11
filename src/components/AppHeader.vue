@@ -5,11 +5,11 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">  
         <b-button v-show = '!$store.state.loggedIn' size="sm" v-on:click="displayLoginModal()" class="m-2 button2">Sign In</b-button>
-        <b-dropdown id="ddown" align="right" text="loggedin user" class="m-2">
+        <b-dropdown id="ddown" :text = '$store.state.firstName' align="right" class="m-2">
          <b-dropdown-item href="#">Action</b-dropdown-item>
          <b-dropdown-item href="#">Another action</b-dropdown-item>
          <b-dropdown-divider></b-dropdown-divider>
-         <b-dropdown-item href="#">signout </b-dropdown-item>
+         <b-dropdown-item href="/" v-on:click = "logoutUser()">Sign Out</b-dropdown-item>
        </b-dropdown>
      </b-navbar-nav>
    </b-navbar>
@@ -24,7 +24,7 @@ export default {
   props: [],
   data(){
     return{
-      tooltipdta: "Reco lo Reco do par Login karke :P"
+      loginTooltip: "Paleez login from here"
     }
   },
 
@@ -55,6 +55,13 @@ export default {
       console.log(that);
       this.$parent.$options.methods.callThis(that);
     },
+
+    logoutUser: function(){
+      console.log(this);
+      var loginStatus = false;
+      this.$store.commit(
+          'UPDATE_USERLOGIN',loginStatus)
+    }
   }
 }
 </script>
