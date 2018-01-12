@@ -13,8 +13,8 @@ import AppHeader from './components/AppHeader'
 import UserProfile from './components/UserProfile'
 
 export default {
-
   name: 'app',
+
   data(){
     return {
     }
@@ -28,22 +28,23 @@ export default {
 
   methods: {
 
-    callThis: function(that){
+    callThis: function(that){ //called on clicking sign in, request reco and write reco button
 
       IN.UI.Authorize().place();
-      var loggedInUser = IN.User.isAuthorized();
+      var loggedInUser = IN.User.isAuthorized(); // for checking whether user is authorized
 
       if(!loggedInUser){
         this.nowCallThis(that);
       }
+      else{
+        that.$store.commit(
+          'UPDATE_USERLOGIN', loggedInUser)
+        } //if the user is authorized commiting the value of loggedInUser
 
-      that.$store.commit(
-        'UPDATE_USERLOGIN', loggedInUser)
+        return loggedInUser;
+      },
 
-      return loggedInUser;
-    },
-
-    nowCallThis: function(that){
+    nowCallThis: function(that){ // called only if the user is not authorized
 
       IN.Event.on(IN, "auth", getProfileData);
 
@@ -55,15 +56,15 @@ export default {
 
         var profileDetails = JSON.stringify(data);
         var loggedInUser = true;
-        // committing the value of loggedInUser if the user is logging in
+        // committing the value of loggedInUser to store if the user has authorized
         that.$store.commit(
           'UPDATE_USERLOGIN',loggedInUser)
-
+        // committing profile details to store if the user has authorized
         that.$store.commit(
           'UPDATE_USER', profileDetails);
 
-        //POST API call to send the linkedin data
-       /* axios
+        //POST API call to send the linkedin profile data
+        axios
         .post('https://referworthyintern.herokuapp.com/push', {
           body: this.profileDetails
         })
@@ -73,15 +74,15 @@ export default {
         .catch((response) => {
           console.log("post call mein error aaya");
         })
-      }*/
-    }
-
-      function onError() {
-        this.error = "yolo error aa gaya, Nacho BC!!"
-        console.log(error);
       }
     }
+
+    function onError() {
+      this.error = "yolo error aa gaya, Nacho BC!!"
+      console.log(error);
+    }
   }
+}
 }
 
 </script>

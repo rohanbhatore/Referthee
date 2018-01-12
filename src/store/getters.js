@@ -1,11 +1,11 @@
 export const getUserDetails = function(state){
- state.userDetails
+	state.userDetails
 }
 
 export const getLoggedIn = function(state){
- state.loggedIn
+	state.loggedIn
 } 
 
 export const getFirstName = function(state){
- state.firstName
+	state.firstName
 }

@@ -9,7 +9,7 @@ import Router from 'vue-router'
 import router from './router'
 import LoadScript from 'vue-plugin-load-script';
 import store from './store'
-import Home from './components/Home';
+import Home from './components/Home'; // registering the component
 import AppHeader from './components/AppHeader';
 import UserProfile from './components/UserProfile'
 import Spinner from './components/Spinner'
@@ -20,7 +20,8 @@ import VueLodash from 'vue-lodash'
 import VueClipboards from 'vue-clipboards';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueSweetalert2 from 'vue-sweetalert2';
+import VueSweetalert2 from 'vue-sweetalert2'; //import vue packages to be used in the application
+
 
 Vue.use(VueLodash, lodash) // to do
 Vue.use(VueAxios, axios)
@@ -29,14 +30,14 @@ Vue.use(BootstrapVue);
 Vue.use(Router);
 Vue.use(LoadScript);
 Vue.use(VueClipboards);
-Vue.use(VueSweetalert2);
+Vue.use(VueSweetalert2); //use the imported package on Vue instance
 
 
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
-	store,
-	router,
+	store, // to use $store anywhere in the application
+	router, // to use $router anywhere in the application
   /*beforeMount: function () {
     window.Vue = this;
 },*/

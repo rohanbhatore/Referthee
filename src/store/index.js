@@ -9,10 +9,10 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations,
+	state,
+	getters,
+	actions,
+	mutations,
   //plugins
 })
 

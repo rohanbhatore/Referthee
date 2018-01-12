@@ -1,6 +1,6 @@
 <template>
   <body class="parallax">
-	<div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 80px;">
+   <div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 80px;">
     <b-container class="bv-example-row ">
       <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
         <b-col cols="12" md="auto" >
@@ -144,16 +144,16 @@
       <!-- social sharing buttons-->
       <a href="fb-messenger://share/?link=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ&app_id=133023260728475" title="messenger" >
         <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/wquhwlws7/facebook-messenger1.png">
-      </a>&nbsp &nbsp &nbsp
+      </a>&nbsp; &nbsp; &nbsp;
       <a href="slack://send?text=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="slack" >
         <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/nvtnm4iaf/slack.png">
-      </a>&nbsp &nbsp
+      </a>&nbsp; &nbsp;
       <a href="https://twitter.com/home?status=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="twitter" >
         <img id="fb" width="1.5%" height="1.5%" src="https://s13.postimg.org/qfpag3viv/twitter_nulled.png">
-      </a>&nbsp &nbsp 
+      </a>&nbsp; &nbsp; 
       <a href="whatsapp://send?text=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="whatsapp" >
         <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/4dz0695xz/whatsapp.png">
-      </a>&nbsp &nbsp &nbsp
+      </a>&nbsp; &nbsp; &nbsp;
       <a href="https://hrefshare.com/ba494" title="linkedin" >
         <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/6ijd7cupz/linkedin.png">
       </a>
@@ -184,9 +184,11 @@
 import Spinner from './Spinner'
 export default {
   name: 'user-profile',
+
   components: {
     Spinner
   },
+
   data () {
     return {
       copyData: 'https://goo.gl/35q8vF',
@@ -204,7 +206,7 @@ export default {
       }
     },
 
-    displayCopyLinkModal: function(){
+    displayCopyLinkModal: function(){ //opens when copy text button is clicked
       this.$swal({
         position: 'center',
         type: 'success',

@@ -19,9 +19,12 @@
 <script>
 export default {
   name: 'app-header',
+
   components: { 
   },
+
   props: [],
+
   data(){
     return{
       loginTooltip: "Paleez login from here"
@@ -49,18 +52,17 @@ export default {
       })
     },
 
-    onButtonClick: function(){
-
+    onButtonClick: function(){ //called on click of Sign In button, not being called right now
       var that = this;
       console.log(that);
       this.$parent.$options.methods.callThis(that);
     },
 
-    logoutUser: function(){
+    logoutUser: function(){ //called on click of Sign Out in dropdown
       console.log(this);
       var loginStatus = false;
       this.$store.commit(
-          'UPDATE_USERLOGIN',loginStatus)
+        'UPDATE_USERLOGIN',loginStatus)
     }
   }
 }
