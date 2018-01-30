@@ -13,7 +13,7 @@
 
        {{users.firstName+' '+users.lastName}}
        {{users.title}}
-       <a :href= "users.publicProfileUrl" target="_blank"><img src = "https://pbs.twimg.com/profile_images/614583061448036352/CBpFkPaz.png" align = "center" width = "30px" height = "30px" style = "padding-top:2px; border-radius:5px" ></a>
+       <a :href= "users.linkedinUrl" target="_blank"><img src = "https://pbs.twimg.com/profile_images/614583061448036352/CBpFkPaz.png" align = "center" width = "30px" height = "30px" style = "padding-top:2px; border-radius:5px" ></a>
        </pre>
        
     </b-col>

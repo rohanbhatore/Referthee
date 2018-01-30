@@ -20,9 +20,11 @@ import VueLodash from 'vue-lodash'
 import VueClipboards from 'vue-clipboards';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueSweetalert2 from 'vue-sweetalert2'; //import vue packages to be used in the application
+import VueSweetalert2 from 'vue-sweetalert2';
+import VueLocalStorage from 'vue-ls'; //import vue packages to be used in the application
 
 
+ 
 Vue.use(VueLodash, lodash) // to do
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false;
@@ -30,14 +32,16 @@ Vue.use(BootstrapVue);
 Vue.use(Router);
 Vue.use(LoadScript);
 Vue.use(VueClipboards);
-Vue.use(VueSweetalert2); //use the imported package on Vue instance
+Vue.use(VueSweetalert2);
+Vue.use(VueLocalStorage); //use the imported package on Vue instance
 
 
 /* eslint-disable no-new */
 var vm = new Vue({
 	el: '#app',
 	store, // to use $store anywhere in the application
-	router, // to use $router anywhere in the application
+	router,// to use $router anywhere in the application
+	VueLocalStorage, 
   /*beforeMount: function () {
     window.Vue = this;
 },*/
