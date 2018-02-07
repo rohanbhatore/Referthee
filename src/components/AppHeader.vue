@@ -1,14 +1,14 @@
 <template>
-  <div class="app-header">
-    <b-navbar toggleable="md" type="dark" variant="dark" fixed = "top">
-      <router-link to="/home" style="font-size: 30px; color:black">refer<a style="color:#42B398" >worthy</a></router-link>
+  <div class="app-header" style = "height:30px">
+    <b-navbar toggleable="md" type="dark" variant="white" fixed = "top">
+      <router-link to="/home" style="font-size: 30px; color:black" class = "title">Refer<a style="font-size: 30px; color:#42B398" >worthy</a></router-link>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">  
         <b-button v-show = '!$store.state.loggedIn' size="sm" v-on:click="displayLoginModal()" class="m-2 button2">Sign In</b-button>
         <!--<router-link  v-show = '!$store.state.loggedIn' v-on:click = "displayLoginModal()" to = "/login" tag="b-button" type="button"  class="btn btn-success btn-block m-2 button2">login</router-link>-->
         <b-dropdown id="ddown" v-show = '$store.state.loggedIn' :text = '$store.state.firstName' align="right" class="m-2">
          <b-dropdown-item href="#"><router-link to = '/user-profile'>Profile</router-link></b-dropdown-item>
-         <b-dropdown-item href="#">Another action</b-dropdown-item>
+         <b-dropdown-item href="#"><router-link to = '/job-search'>Job Search</router-link></b-dropdown-item>
          <b-dropdown-divider></b-dropdown-divider>
          <b-dropdown-item href="/" v-on:click = "logoutUser()">Sign Out</b-dropdown-item>
        </b-dropdown>
@@ -87,20 +87,34 @@ export default {
       //console.log(this);
       var loginStatus = false;
       this.$store.commit(
-        'UPDATE_USERLOGIN',loginStatus)
+        'UPDATE_USERLOGIN',loginStatus);
+      this.$store.commit(
+        'UPDATE_USER','');
         IN.User.logout();//logging out user from application
-        console.log(this.$store.state.loggedIn);
+        //console.log(this.$store.state.loggedIn);
         
     }
     }
   }
-
 </script>
-
 <style>
+.title, .title:active, .title:visited, .title:focus  {
+    text-decoration:none;
+}
+.title:hover{
+  text-decoration: none;
+  /*border-radius: 5px;
+  border-color: green;
+  border-style: solid;*/
+  padding-left: 2px;
+  padding-right: 2px;
+  
+}
 .app-header{
   
-  background-color: #eeeeee;
+  height:50px;
+  opacity: 1;
+  margin-bottom: 35px;
 }
 
 .button {
@@ -111,7 +125,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 2px 2px;
   cursor: pointer;
   border-radius: 5px;
   width: 210px;
@@ -123,9 +137,10 @@ export default {
 
 }
 .button2 {
-  font-size: 15px;
+  font-size: 10px;
   padding: 10px 20px;
   background-color:#114539;
+  margin:4px;
 
 }
 
@@ -141,7 +156,7 @@ export default {
 }
 .button3{
         /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
-        padding: 10px 50px; background-color:#114539; border-radius: 30px;  border: 1px solid #114539; width:80%/*;"*/
+        padding: 5px 50px; background-color:#114539; border-radius: 50%;  border: 1px solid #114539; width:80%/*;"*/
       }
       .button3:hover {
         font-size: 15px;

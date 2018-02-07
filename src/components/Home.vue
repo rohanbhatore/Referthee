@@ -1,17 +1,20 @@
 <template>
-  <body class="">
-   <div class="container align-center" style = "margin-top: 77px;">
-        <div class="row justify-content-md-center">
-            <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-3">GET RECOMMENDED<br></h1>
-                
-                <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                    Add credibility to your profile with a recommendation<br><br>A recommendation from your supervisor or peer makes you twice as likely to land a job within one month<br><br>As a freelancer or consultant, positive recommendations significantly increase your chances to get new projects
-                </p>
-                
-            </div>
-        </div>
-    </div>
+  <body class="parallax" >
+   <div name="home"  style = "padding-top: 30px;">
+      <b-jumbotron bg-variant="white" text-variant="dark"  align="center" class="bg-transparent" style="padding:19px 10px 10px 1px">
+        <template slot="header">
+          <pre class="display-2" style="color:white; font-family:Arial;">Get recommended!</pre>
+        </template>
+        <template slot="lead">
+          <h5 style="color:white; font-family:Exo;">Add credibility to your profile with a recommendation</h5>
+        </template>
+        <hr class="my-4" width="40%" >
+        <pre style="color:white; font-size: 25px; font-family:Exo;" align="center">A recommendation from your supervisor or peer makes you twice
+         as likely to land a job within one month
+
+         As a freelancer or consultant, positive recommendations significantly
+         increase your chances to get new projects
+       </pre>
        <hr class="my-2" width="40%" >
        <!-- middle content-->
        <b-container class="bv-example-row" style="padding:0px 0px 0px 0px" >
@@ -92,10 +95,13 @@ export default {
       }
       </script>
 
-      <style>
+      <style> 
       body{
-        background-image: url("../assets/images/jumbotron.jpg");
+        background-image: url('../assets/images/bg.jpg');
+        background-repeat: repeat-y;
       }
+
+       
       .button3{
         /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
         padding: 10px 50px; background-color:#114539; border-radius: 30px;  border: 1px solid #114539; width:80%/*;"*/

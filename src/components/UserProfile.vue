@@ -1,8 +1,8 @@
 <template>
-  <body class="parallax">
-   <div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 80px;">
+  <body class="parallax" style = " background-image: url('./src/assets/images/bg.jpg'); width:100%;">
+   <div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 40px;">
     <b-container class="bv-example-row ">
-      <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
+      <b-row class="justify-content-sm-center" style="color:white; font-family:Montserrat;">
         <b-col cols="12" md="auto" >
          <div style="padding:20px">
           <b-img :src="user.pictureUrl" fluid alt="Responsive image" />
@@ -33,7 +33,7 @@
       <br>
       <b-container class="bv-example-row">
         <b-row align-h="center" >
-          <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Traits people use to describe Vikas:-</b-col>
+          <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Traits people use to describe {{user.firstName}}:-</b-col>
           <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
           <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
         </b-row>
@@ -81,13 +81,13 @@
      <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
       <b-col cols="6">
        <pre style="padding:2px; color:white" align="center">
-         Vikas Bansal
-         VP, Products at Flipkart
+        {{user.firstName+' '+user.lastName}}
+        {{user.headline}}
        </pre>
      </b-col>
      <b-col cols="2" >
        <div style="padding:20px">
-         <b-img src="https://lorempixel.com/100/100/" fluid alt="Responsive image" />
+         <b-img :src="user.pictureUrl" fluid alt="Responsive image" />
        </div>
      </b-col>  
    </b-row>
@@ -97,10 +97,7 @@
   <b-row class="justify-content-center" style="color:white; font-family:Montserrat;">
     <b-col cols="8">
       <p style="padding:2px; color:white" align="center">
-        Vikas was a fellow placement committee member at IIM Bangalore. The work required running one of the most complex processes with greatest of finesse and
-        handling multiple companies top executives. Vikas is a person who would never drop the ball and can be trusted with most arduous of tasks. He is a great
-        team player and has strong people handling skills. He also stands out due to his sharp acumen and crisis handling abilities. I am sure, Vikas would do 
-        wonderfully well in a senior management role.
+        {{user.summary}}
       </p>
     </b-col>
   </b-row>
@@ -136,9 +133,9 @@
 </b-row>
 </b-container>
 <div style = "text-align:center;">
-<b-button class="button5" v-if = "!shown" v-on:click = "shown = !shown">Request Recommendation</b-button>
+<b-button class="button5" v-show = "!shown" v-on:click = "shown = !shown">Request Recommendation</b-button>
 <!--social sharing buttons // part-1-->
-<b-container v-if="shown">
+<b-container v-show="shown" style ="width = 100%">
   <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
     <b-col cols="12" md="auto" align="center">
      <div style="padding:20px">
@@ -244,6 +241,11 @@ export default {
 </script>
 
 <style>
+body{
+  overflow-x: hidden; 
+  max-width:100%;
+ 
+}
 #fb:hover{
   opacity:0.6;
 } 

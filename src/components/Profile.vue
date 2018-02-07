@@ -1,6 +1,6 @@
 <template>
-  <body class="parallax">
-   <div class = "user-profile" style = "padding-top: 80px;">
+  <body class="parallax" style = " background-image: url('./src/assets/images/bg.jpg');">
+   <div v-if = '$store.state.apiResult' class = "user-profile" style = "padding-top: 80px;">
     <b-container class="bv-example-row">
       <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat; ">
         <b-col cols="12" md="auto">
@@ -144,9 +144,11 @@
 </b-tabs>
 </b-container>
 </div>
-</div>
-<!-- Conditional Rendering -->
 
+<!-- Conditional Rendering -->
+<div v-else style = "padding-top: 80px;">
+  <spinner></spinner>
+</div>
 </body>
 </template>
 
@@ -183,6 +185,8 @@ export default {
           console.log(this.profileDetails);
           this.$store.commit('UPDATE_PROFILE', this.profileDetails);
           console.log("mounted vala" +this.$store.state.profileDetails);
+          //this.result = true;
+          this.$store.commit('UPDATE_PROFILESTATUS', true);
         })
          .catch((response)=>{
           console.log("user details mein error aa gaya");

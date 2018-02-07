@@ -1,13 +1,16 @@
 import Vue from 'vue'
+
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import UserProfile from '@/components/UserProfile'
 import Profile from '@/components/Profile'
-
+import JobSearch from '@/components/JobSearch'
+import JobDescription from '@/components/JobDescription'
 Vue.use(Router);
 
 const router = new Router({
+  mode: 'history',
   routes: [
   {
     path: '/',
@@ -60,7 +63,20 @@ const router = new Router({
   name:'profile',
   component: Profile,
   
+},
+{
+
+  path:'/job-search',
+  name: 'job-search',
+  component:JobSearch,
+},
+{
+  path:'/job-description',
+  name: 'job-description',
+  component:JobDescription
 }
+
+
   ]
 })
 

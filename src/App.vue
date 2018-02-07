@@ -4,7 +4,7 @@
    <router-view @buttonClicked = 'callThis($event)'></router-view>
  </div>
 </template>
-//<script type="text/javascript" src="./script.js"></script>
+
 <script>
 import axios from 'axios'
 import Vue from 'vue'
@@ -12,9 +12,10 @@ import Home from './components/Home'
 import AppHeader from './components/AppHeader'
 import UserProfile from './components/UserProfile'
 import Profile from './components/Profile'
+import JobSearch from './components/JobSearch'
+import JobDescription from './components/JobDescription'
 import VueLocalStorage from 'vue-ls'
 //import script from'./assets/theme/js/script'
-
 
 export default {
   name: 'app',
@@ -28,7 +29,9 @@ export default {
     Home,
     AppHeader,
     UserProfile,
-    Profile
+    Profile,
+    JobSearch,
+    JobDescription
   },
 
   methods: {
@@ -68,8 +71,20 @@ export default {
 
       function onSuccess(data) {
         //debugger;
-        console.log(data);
-        var profileDetails = JSON.stringify(data);
+        //console.log(data.positions);
+        var details = data;
+        //var positions = JSON.parse(JSON.stringify(data,['emailAddress','firstname','headline','id', 'industry','lastName','location',,'_total'],4 ));
+        for(var i=0; i<data['positions']['_total']; i++){
+              delete data.positions.values[i].location.country;
+        }
+        //var positions = JSON.parse(JSON.stringify(data.positions, [total, values], 4));
+          //data['positions'] = positions;
+          //console.log(data);
+        //console.log(profileDetails['positions']['_total']);
+        details['emailId'] = details['emailAddress'];
+        delete details['emailAddress'];
+        details['linkedinId'] = details['id'];
+        delete details['id'];
         var loggedInUser = true;
         // committing the value of loggedInUser if the user is logging in
         that.$store.commit(
@@ -77,10 +92,11 @@ export default {
 
         that.$store.commit(
           'UPDATE_USER', data);
-          console.log(that.$store.state.userDetails);
+          //console.log(that.$store.state.userDetails);
           that.$store.commit(
           'UPDATE_FIRSTNAME', data.firstName);
-          //console.log(this.$store.state.userDetails);
+          //that.$store.commit('UPDATE_APISENDING', data.firstName, data.last-name, data.publicProfileUrl, data.pictureUrl,data.headline);
+          console.log(details);
           //console.log(typeof(that.$store.state.firstName));
           //$("#userName").html(that.$store.state.firstName);
           //that.user-profile.methods.updateData(that.$store.state.firstName, data.headline);
@@ -89,10 +105,29 @@ export default {
           Vue.ls.set('userDetails',data);
           Vue.ls.set('loggedInUser',true);
         //POST API call to send the linkedin data
-       axios
-        .post('https://referworthyintern.herokuapp.com/push', {
-          body: data
-        })
+          /*if(data.pictureUrl == null){
+            data.pictureUrl = ''
+          }*/
+          debugger;
+       axios({
+          method:'post',
+          url:'https://referworthy-api.herokuapp.com/push',
+          data:{
+          "firstName": data.firstName,
+          "lastName": data.lastName,
+          "linkedinId": data.linkedinId,
+          "emailId": data.emailId,
+          "location": data.location,
+          "numConnections": data.numConnections,
+          "pictureUrl": data.pictureUrl,
+          "summary": data.summary,
+          "industry": data.industry,
+          "positions": data.positions,
+          "headline": data.headline,
+          "publicProfileUrl": data.publicProfileUrl
+        }
+      }
+        )
         .then((response) =>{
           console.log(response);
           this.shortenedUrl = JSON.stringify(response);
@@ -143,3 +178,10 @@ export default {
   }
   </style>
 -->
+<style type="text/css">
+body{
+  background-image: url('assets/images/bg.jpg');
+  background-repeat: repeat-y;
+}
+   
+</style>
