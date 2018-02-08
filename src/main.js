@@ -25,7 +25,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueLocalStorage from 'vue-ls'; //import vue packages to be used in the application
 import createMutationsSharer from 'vuex-shared-mutations';
-import style from './style.css'
+
 
  
 Vue.use(VueLodash, lodash) // to do
