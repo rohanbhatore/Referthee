@@ -12,7 +12,9 @@ import Home from './components/Home'
 import AppHeader from './components/AppHeader'
 import UserProfile from './components/UserProfile'
 import Profile from './components/Profile'
+import VueLocalStorage from 'vue-ls'
 //import script from'./assets/theme/js/script'
+
 
 export default {
   name: 'app',
@@ -22,7 +24,7 @@ export default {
     }
   },
 
-  components: {
+  components : {
     Home,
     AppHeader,
     UserProfile,
@@ -33,18 +35,22 @@ export default {
 
     callThis: function(that){
       
-      IN.UI.Authorize().place();
-       
-      var loggedInUser = IN.User.isAuthorized();
+      
+      var login = IN.User.isAuthorized(); 
+      var loggedInUser = Vue.ls.get('loggedInUser') && login;
       console.log(loggedInUser);
 
       if(!loggedInUser){
         this.nowCallThis(that);
       } else{
         that.$store.commit(
-        'UPDATE_USERLOGIN', loggedInUser)
+        'UPDATE_USERLOGIN', loggedInUser);
+        var data = Vue.ls.get('userDetails');
         //console.log(loggedInUser);
-        
+        that.$store.commit(
+          'UPDATE_USER', data);
+        that.$store.commit(
+          'UPDATE_FIRSTNAME', data.firstName);
 
       }
       //loggedInUser = that.$store.loggedIn;
@@ -53,7 +59,7 @@ export default {
     },
 
     nowCallThis: function(that){
-
+      IN.UI.Authorize().place();
       IN.Event.on(IN, "auth", getProfileData);
 
       function getProfileData(){
@@ -79,6 +85,9 @@ export default {
           //$("#userName").html(that.$store.state.firstName);
           //that.user-profile.methods.updateData(that.$store.state.firstName, data.headline);
           //return loggedInUser;
+          //function to store data locally
+          Vue.ls.set('userDetails',data);
+          Vue.ls.set('loggedInUser',true);
         //POST API call to send the linkedin data
        axios
         .post('https://referworthyintern.herokuapp.com/push', {

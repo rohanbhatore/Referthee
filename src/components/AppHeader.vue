@@ -1,13 +1,13 @@
 <template>
   <div class="app-header">
     <b-navbar toggleable="md" type="dark" variant="dark" fixed = "top">
-      <b-navbar-brand href="#" style="font-size: 30px; color:black">refer<a style="color:#42B398" >worthy</a></b-navbar-brand>
+      <router-link to="/home" style="font-size: 30px; color:black">refer<a style="color:#42B398" >worthy</a></router-link>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">  
         <b-button v-show = '!$store.state.loggedIn' size="sm" v-on:click="displayLoginModal()" class="m-2 button2">Sign In</b-button>
         <!--<router-link  v-show = '!$store.state.loggedIn' v-on:click = "displayLoginModal()" to = "/login" tag="b-button" type="button"  class="btn btn-success btn-block m-2 button2">login</router-link>-->
-        <b-dropdown id="ddown" :text = '$store.state.firstName' align="right" class="m-2">
-         <b-dropdown-item href="#">Action</b-dropdown-item>
+        <b-dropdown id="ddown" v-show = '$store.state.loggedIn' :text = '$store.state.firstName' align="right" class="m-2">
+         <b-dropdown-item><router-link to = '/user-profile'>Profile</router-link></b-dropdown-item>
          <b-dropdown-item href="#">Another action</b-dropdown-item>
          <b-dropdown-divider></b-dropdown-divider>
          <b-dropdown-item href="/" v-on:click = "logoutUser()">Sign Out</b-dropdown-item>
@@ -90,6 +90,7 @@ export default {
         'UPDATE_USERLOGIN',loginStatus)
         IN.User.logout();//logging out user from application
         console.log(this.$store.state.loggedIn);
+        
     }
     }
   }

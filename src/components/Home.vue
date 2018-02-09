@@ -94,7 +94,7 @@ export default {
 
       <style>
       body{
-        background-image: url("../assets/images/jumbotron.jpg");
+        background-image: url("../assets/images/bg.jpg");
       }
       .button3{
         /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
