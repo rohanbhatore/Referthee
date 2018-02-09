@@ -1,5 +1,5 @@
 <template>
-  <body class="parallax" style = " background-image: url('./src/assets/images/bg.jpg'); width:100%;">
+  <body class="parallax">
    <div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 40px;">
     <b-container class="bv-example-row ">
       <b-row class="justify-content-sm-center" style="color:white; font-family:Montserrat;">
@@ -240,11 +240,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang = 'css'>
 body{
   overflow-x: hidden; 
   max-width:100%;
- 
+  
 }
 #fb:hover{
   opacity:0.6;
