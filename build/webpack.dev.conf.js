@@ -52,16 +52,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }),
   ]
 })
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ]
-  }
-}
+
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port
