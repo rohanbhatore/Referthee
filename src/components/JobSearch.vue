@@ -92,7 +92,7 @@ import axios from 'axios';
           console.log("job details mein error aa gaya");
         })
 		}*/,
-		beforeCreate(){
+		/*beforeCreate(){
 			debugger;
 			axios.get('https://authenticjobs.com/api/?api_key=15830df45c0d41fed9dfb46a1a1834bc&method=aj.jobs.search&format=json',{
 				headers: {
@@ -110,7 +110,7 @@ import axios from 'axios';
 				console.log("job details mein error aa gaya");
 
 			})
-		},
+		},*/
 		methods:{
 			
 
