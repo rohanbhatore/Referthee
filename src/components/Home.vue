@@ -1,6 +1,6 @@
 <template>
-  <body class="parallax">
-    <div name="home"  style = "padding-top: 60px;">
+  <body class="parallax" >
+   <div name="home"  style = "padding-top: 30px;">
       <b-jumbotron bg-variant="white" text-variant="dark"  align="center" class="bg-transparent" style="padding:19px 10px 10px 1px">
         <template slot="header">
           <pre class="display-2" style="color:white; font-family:Arial;">Get recommended!</pre>
@@ -44,16 +44,14 @@ import axios from 'axios'
 
 export default {
   name: 'home',
-
   props: [''],
-
   components: {
   },
-
   data(){
     return {
     }
   },
+  
 
   beforeMount(){
          //API call to get the user details to be rendered on profile page
@@ -68,43 +66,50 @@ export default {
          .catch((response)=>{
           console.log("user details mein error aa gaya");
         })*/
-      },
+       },
 
-      methods: {
+       methods: {
 
-        onRequestRecoClick: function(){ //called on click of request reco and write reco button
+        onRequestRecoClick: function(){
           var that = this;
           //console.log(that);
 
-          //API call to get the user details to be rendered on profile page
-          axios
-          .get('https://referworthyintern.herokuapp.com/details/1')
-          .then((response) => {
-            this.profileDetails = response;
-            console.log(this.profileDetails);
-            this.$store.commit('UPDATE_USER', this.profileDetails)
-            this.$store.commit('UPDATE_FIRSTNAME', this.profileDetails.data.firstName)
-            console.log("mounted vala" +this.$store.state.userDetails)
-          })
-          .catch((response)=>{
-            console.log("user details mein error aa gaya");
-          })
 
-          var loggedInUser = this.$parent.$options.methods.callThis(that);
+          //API call to get the user details to be rendered on profile page
+         /*axios
+         .get('https://referworthyintern.herokuapp.com/details/1')
+         .then((response) => {
+          this.profileDetails = response;
+          console.log(this.profileDetails);
+          this.$store.commit('UPDATE_USER', this.profileDetails)
+          this.$store.commit('UPDATE_FIRSTNAME', this.profileDetails.data.firstName)
+          console.log("mounted vala" +this.$store.state.userDetails)
+        })
+         .catch((response)=>{
+          console.log("user details mein error aa gaya");
+        })*/
+        //console.log(this.$options.methods.xy());  
+        var loggedInUser = this.$parent.$options.methods.callThis(that);
+          }
         }
       }
-    }
-    </script>
+      </script>
 
-    <style>
-    .button3{
-      /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
-      padding: 10px 50px; background-color:#114539; border-radius: 30px;  border: 1px solid #114539; width:80%/*;"*/
-    }
-    .button3:hover {
-      font-size: 15px;
-      background-color: #3EC2A2;
-      border: 1px solid #3EC2A2;
+      <style> 
+      body{
+        background-image: url('../assets/images/bg.jpg');
+        background-repeat: repeat-y;
+      }
 
-    }
-    </style>
+       
+      .button3{
+        /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
+        padding: 10px 50px; background-color:#114539; border-radius: 30px;  border: 1px solid #114539; width:80%/*;"*/
+      }
+      .button3:hover {
+        font-size: 15px;
+        background-color: #3EC2A2;
+        border: 1px solid #3EC2A2;
+
+      }
+      </style>

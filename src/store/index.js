@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createMutationsSharer from 'vuex-shared-mutations'
 import { state } from './state'
 import * as getters from './getters'
 import * as actions from './actions'
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
 	getters,
 	actions,
 	mutations,
-  //plugins
+  	plugins:[createMutationsSharer({ predicate: ['UPDATE_USER', 'UPDATE_USERLOGIN', 'UPDATE_FIRSTNAME'] })]
 })
+
 
 export default store

@@ -1,22 +1,25 @@
 <template>
-  <div class="app-header">
+  <div class="app-header" style = "height:30px">
     <b-navbar toggleable="md" type="dark" variant="white" fixed = "top">
-      <b-navbar-brand href="#" style="font-size: 30px; color:black">refer<a style="color:#42B398" >worthy</a></b-navbar-brand>
+      <router-link to="/home" style="font-size: 30px; color:black" class = "title">Refer<a style="font-size: 30px; color:#42B398" >worthy</a></router-link>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">  
         <b-button v-show = '!$store.state.loggedIn' size="sm" v-on:click="displayLoginModal()" class="m-2 button2">Sign In</b-button>
-        <b-dropdown id="ddown" :text = '$store.state.firstName' align="right" class="m-2">
-         <b-dropdown-item href="#">Action</b-dropdown-item>
-         <b-dropdown-item href="#">Another action</b-dropdown-item>
+        <!--<router-link  v-show = '!$store.state.loggedIn' v-on:click = "displayLoginModal()" to = "/login" tag="b-button" type="button"  class="btn btn-success btn-block m-2 button2">login</router-link>-->
+        <b-dropdown id="ddown" v-show = '$store.state.loggedIn' :text = '$store.state.firstName' align="right" class="m-2">
+         <b-dropdown-item href="#"><router-link to = '/user-profile'>Profile</router-link></b-dropdown-item>
+         <b-dropdown-item href="#"><router-link to = '/job-search'>Job Search</router-link></b-dropdown-item>
          <b-dropdown-divider></b-dropdown-divider>
          <b-dropdown-item href="/" v-on:click = "logoutUser()">Sign Out</b-dropdown-item>
        </b-dropdown>
      </b-navbar-nav>
    </b-navbar>
  </div>
+
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'app-header',
 
@@ -47,28 +50,73 @@ export default {
         height: 400,
         padding: 60,
         showCancelButton: false,
-        showConfirmButton: false,
-        focusConfirm: false,     
-      })
+        showConfirmButton: true,
+        confirmButtonText: '',
+        focusConfirm: false,
+        confirmButtonClass:'linked'     
+      }).then(    //executed on clicking Signin with LinkedIn
+      result=> {
+        if(result.value){
+          this.onButtonClick(); 
+        }
+        
+      });
     },
 
     onButtonClick: function(){ //called on click of Sign In button, not being called right now
+     /* axios
+         .get('https://referworthyintern.herokuapp.com/details/1')
+         .then((response) => {
+          this.profileDetails = response;
+          console.log(this.profileDetails);
+          this.$store.commit('UPDATE_USER', this.profileDetails)
+          this.$store.commit('UPDATE_FIRSTNAME', this.profileDetails.data.firstName)
+          console.log("mounted vala" +this.$store.state.userDetails)
+        })
+         .catch((response)=>{
+          console.log("user details mein error aa gaya");
+        })*/
       var that = this;
-      console.log(that);
-      this.$parent.$options.methods.callThis(that);
+      //console.log(that);
+      this.$router.push('user-profile');
+      this.$emit('buttonClicked',that);
+      //this.$parent.$options.methods.callThis(that);//api call
     },
-
+    
     logoutUser: function(){ //called on click of Sign Out in dropdown
-      console.log(this);
+      //console.log(this);
       var loginStatus = false;
       this.$store.commit(
-        'UPDATE_USERLOGIN',loginStatus)
+        'UPDATE_USERLOGIN',loginStatus);
+      this.$store.commit(
+        'UPDATE_USER','');
+        IN.User.logout();//logging out user from application
+        //console.log(this.$store.state.loggedIn);
+        
+    }
     }
   }
-}
 </script>
-
 <style>
+.title, .title:active, .title:visited, .title:focus  {
+    text-decoration:none;
+}
+.title:hover{
+  text-decoration: none;
+  /*border-radius: 5px;
+  border-color: green;
+  border-style: solid;*/
+  padding-left: 2px;
+  padding-right: 2px;
+  
+}
+.app-header{
+  
+  height:50px;
+  opacity: 1;
+  margin-bottom: 35px;
+}
+
 .button {
   background-color: #500000; /* Green */
   border: none;
@@ -77,7 +125,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 2px 2px;
   cursor: pointer;
   border-radius: 5px;
   width: 210px;
@@ -89,9 +137,10 @@ export default {
 
 }
 .button2 {
-  font-size: 15px;
+  font-size: 10px;
   padding: 10px 20px;
   background-color:#114539;
+  margin:4px;
 
 }
 
@@ -100,3 +149,19 @@ export default {
   background-color: #3EC2A2;
   
 }
+.linked{
+  background-image : url('https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png');
+  width:215px;
+  height:41px;
+}
+.button3{
+        /*v-bind:style="{ hover: ['background-color:#000000'] }"*/  /*style="*/font-size: 15px;
+        padding: 5px 50px; background-color:#114539; border-radius: 50%;  border: 1px solid #114539; width:80%/*;"*/
+      }
+      .button3:hover {
+        font-size: 15px;
+        background-color: #3EC2A2;
+        border: 1px solid #3EC2A2;
+
+      }
+</style>

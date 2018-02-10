@@ -1,19 +1,19 @@
 <template>
-  <body class="parallax">
-   <div v-if = '$store.state.loggedIn' class = "user-profile" style = "padding-top: 40px;">
-    <b-container class="bv-example-row ">
-      <b-row class="justify-content-sm-center" style="color:white; font-family:Montserrat;">
-        <b-col cols="12" md="auto" >
+  <body class="parallax" style = " background-image: url('./src/assets/images/bg.jpg');">
+   <div v-if = '$store.state.apiResult' class = "user-profile" style = "padding-top: 80px;">
+    <b-container class="bv-example-row">
+      <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat; ">
+        <b-col cols="12" md="auto">
          <div style="padding:20px">
-          <b-img :src="user.pictureUrl" fluid alt="Responsive image" />
+          <b-img :src="users.pictureUrl" fluid alt="Responsive image" />
         </div>
       </b-col>
       <b-col cols="12" md="auto">
        <pre style="padding-top:2px; color:white" align="center">
 
-       {{user.firstName+' '+user.lastName}}
-       {{user.headline}}
-       <a :href= "user.publicProfileUrl" target="_blank"><img src = "https://pbs.twimg.com/profile_images/614583061448036352/CBpFkPaz.png" align = "center" width = "30px" height = "30px" style = "padding-top:2px; border-radius:5px" ></a>
+       {{users.firstName+' '+users.lastName}}
+       {{users.title}}
+       <a :href= "users.linkedinUrl" target="_blank"><img src = "https://pbs.twimg.com/profile_images/614583061448036352/CBpFkPaz.png" align = "center" width = "30px" height = "30px" style = "padding-top:2px; border-radius:5px" ></a>
        </pre>
        
     </b-col>
@@ -33,7 +33,7 @@
       <br>
       <b-container class="bv-example-row">
         <b-row align-h="center" >
-          <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Traits people use to describe {{user.firstName}}:-</b-col>
+          <b-col cols="4"  class="bg-transparent border-white" style="border:transparent; font-size:20px; color:white; font-family:Montserrat;">Traits people use to describe Vikas:-</b-col>
           <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
           <b-col cols="2"  class="bg-transparent border-white" style="border:transparent"></b-col>
         </b-row>
@@ -81,13 +81,13 @@
      <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
       <b-col cols="6">
        <pre style="padding:2px; color:white" align="center">
-        {{user.firstName+' '+user.lastName}}
-        {{user.headline}}
+         Vikas Bansal
+         VP, Products at Flipkart
        </pre>
      </b-col>
      <b-col cols="2" >
        <div style="padding:20px">
-         <b-img :src="user.pictureUrl" fluid alt="Responsive image" />
+         <b-img src="https://lorempixel.com/100/100/" fluid alt="Responsive image" />
        </div>
      </b-col>  
    </b-row>
@@ -97,7 +97,10 @@
   <b-row class="justify-content-center" style="color:white; font-family:Montserrat;">
     <b-col cols="8">
       <p style="padding:2px; color:white" align="center">
-        {{user.summary}}
+        Vikas was a fellow placement committee member at IIM Bangalore. The work required running one of the most complex processes with greatest of finesse and
+        handling multiple companies top executives. Vikas is a person who would never drop the ball and can be trusted with most arduous of tasks. He is a great
+        team player and has strong people handling skills. He also stands out due to his sharp acumen and crisis handling abilities. I am sure, Vikas would do 
+        wonderfully well in a senior management role.
       </p>
     </b-col>
   </b-row>
@@ -118,67 +121,30 @@
 </b-row>
 </b-container>
 </b-tab>
-<b-tab title="Request-recommendation" :title-link-class="linkClass(1)" active>
+<b-tab title="Write-recommendation" :title-link-class="linkClass(1)"  active>
   <br>
   <!--social sharing buttons // part-1-->
   <b-container>
    <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
     <b-col cols="12" md="auto" align="center">
      <div style="padding:20px">
-      <h3>ADD CREDIBILITY TO YOUR PROFILE</h3>
-      <h5>Join thousands of professionals showcasing their references on referworthy</h5>
+      <h3></h3>
+      <h5>Refer {{users.firstName}}</h5>
 
     </div>
   </b-col>
 </b-row>
 </b-container>
 <div style = "text-align:center;">
-<b-button class="button5" v-show = "!shown" v-on:click = "shown = !shown">Request Recommendation</b-button>
+<b-button class="button5" v-if = "!shown" v-on:click = "displayLogin()">Write Recommendation</b-button>
 <!--social sharing buttons // part-1-->
-<b-container v-show="shown" style ="width = 100%">
-  <b-row class="justify-content-md-center" style="color:white; font-family:Montserrat;">
-    <b-col cols="12" md="auto" align="center">
-     <div style="padding:20px">
 
-      <h5>
-        Share the link below with your co-workers, peers, clients to get a recommendation for your work
-      </h5>
-      <input type="text" value="https://goo.gl/35q8vF">
-      <button v-on:click="displayCopyLinkModal()" v-clipboard="copyData" class="btn btn-outline-transparent button4"  target="_blank">Copy text</button>
-      <br>
-      <!-- social sharing buttons-->
-      <a href="fb-messenger://share/?link=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ&app_id=133023260728475" title="messenger" >
-        <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/wquhwlws7/facebook-messenger1.png">
-      </a>&nbsp; &nbsp; &nbsp;
-      <a href="slack://send?text=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="slack" >
-        <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/nvtnm4iaf/slack.png">
-      </a>&nbsp; &nbsp;
-      <a href="https://twitter.com/home?status=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="twitter" >
-        <img id="fb" width="1.5%" height="1.5%" src="https://s13.postimg.org/qfpag3viv/twitter_nulled.png">
-      </a>&nbsp; &nbsp; 
-      <a href="whatsapp://send?text=Hi+there%2C+I+am+building+my+professional+profile+on+Referworthy.+Please+write+me+a+recommendation+using+this+link%3A%0D%0A+https%3A%2F%2Freferworthy.typeform.com%2Fto%2FKLsrBJ" title="whatsapp" >
-        <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/4dz0695xz/whatsapp.png">
-      </a>&nbsp; &nbsp; &nbsp;
-      <a href="https://hrefshare.com/ba494" title="linkedin" >
-        <img id="fb" width="1%" height="1%" src="https://s13.postimg.org/6ijd7cupz/linkedin.png">
-      </a>
-      <br><br>
-      <h5>
-        Or send a personalised Email to your recommender
-      </h5>     
-      <!--email button-->
-      <a class="typeform-share button button5" href="https://referworthy.typeform.com/to/bs9fN4" data-mode="popup"  target="_blank">Create Message </a> 
-      <!-- social sharing button ends-->
-    </div>
-  </b-col>
-</b-row>
-</b-container>
 </div>
 </b-tab>
 </b-tabs>
 </b-container>
 </div>
-</div>
+
 <!-- Conditional Rendering -->
 <div v-else style = "padding-top: 80px;">
   <spinner></spinner>
@@ -187,12 +153,13 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Spinner from './Spinner'
 export default {
   name: 'user-profile',
   computed:{
-  user () {
-  return this.$store.state.userDetails;
+  users () {
+  return this.$store.state.profileDetails;
   },
   /*shown(){
   return false;
@@ -201,18 +168,33 @@ export default {
   components: {
     Spinner
   },
-  props: [],
-  data () {
+    data () {
     return {
       copyData: 'https://goo.gl/35q8vF',
       tabIndex: 0,
       shown:false
     }
-
+    },
+   beforeCreate () {
       
-  },
+         axios
+         .get('https://referworthyintern.herokuapp.com/details/1')
+         .then((response) => {
+
+          this.profileDetails = response.data;
+          console.log(this.profileDetails);
+          this.$store.commit('UPDATE_PROFILE', this.profileDetails);
+          console.log("mounted vala" +this.$store.state.profileDetails);
+          //this.result = true;
+          this.$store.commit('UPDATE_PROFILESTATUS', true);
+        })
+         .catch((response)=>{
+          console.log("user details mein error aa gaya");
+        })
+      },
 
   methods:{
+    
 
     linkClass (idx) {
       if (this.tabIndex === idx) {
@@ -233,6 +215,13 @@ export default {
         showConfirmButton: false,
         timer: 1500
       });
+    },
+    displayLogin(){
+      var that = this;
+      this.$emit('buttonClicked', that);
+      debugger;
+        window.location=this.$store.state.profileDetails.shortendUrl;
+      
     }
     
   }
@@ -240,12 +229,7 @@ export default {
 }
 </script>
 
-<style lang = 'css'>
-body{
-  overflow-x: hidden; 
-  max-width:100%;
-  
-}
+<style>
 #fb:hover{
   opacity:0.6;
 } 
