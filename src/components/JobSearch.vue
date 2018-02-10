@@ -4,16 +4,18 @@
 			<div style = "display:inline-block; vertical-align:top; " class="slicers col-sm-3" >
 				<div style = "font-weight: bold;" class = "slicerhead">Skills</div>
 				<div v-for= "fil in slicers">
-				<label class="container" >{{fil.job}}
+				<label class="container" >
   					<input type="checkbox" checked="checked">
   					<span class="checkmark"></span>
+  					<div style = "margin:10px">{{fil.job}}</div>
 				</label>
 			</div>
 				<div style = "font-weight: bold" class = "slicerhead">City</div>
 				<div v-for= "fil in slicers">
-				<label class="container" >{{fil.city}}
+				<label class="container" >
   					<input type="checkbox" checked="checked">
   					<span class="checkmark"></span>
+  					<div style = "margin:10px">{{fil.city}}</div>
 				</label>
 			</div>
 
@@ -27,14 +29,14 @@
 							<div class = "list_item" >
 								<div  class = "list_item_img_container" >
 								<span class = "item_content_img">
-									<img :src="todo.company.logo" fluid alt="Responsive image" style="max-width:120px; max-height:80px; " >
+									<img :src="todo.img" fluid alt="Responsive image" style="max-width:120px; max-height:80px; " >
 								</span>
   						</div>
       <!--<b-col cols="12" md="auto">-->
   		<div style = "color:black;" class = "job_result_item_section">
   			<div class = "jl_in">
-  				<div style="flex: 1 1 0%;">{{todo.title}}</div>
-       			<div>{{todo.company.name}}</div>
+  				<div style="flex: 1 1 0%;">{{todo.text}}</div>
+       			<div>{{todo.desc}}</div>
   			</div>
        	    
        	</div>
@@ -43,12 +45,12 @@
 
        			<div class = "jriel">
        				<i class="material-icons work-exp-icon">work</i>	
-       				{{}}
+       				{{todo.exp}}
        			</div>	
        			<div class = "location_container">
        		    	<i class="material-icons location">place</i>
        				<span class = "jrilc">
-       					{{todo.company.location.city}}
+       					{{todo.location}}
        				</span>
        			</div>	
        		</div>
