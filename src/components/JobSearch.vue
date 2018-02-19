@@ -81,7 +81,7 @@ import axios from 'axios';
 	slicers(){
 			return this.$store.state.slicers;
 		}
-	}/*,
+	},/*,
 		beforeCreate(){//api call to get job details
 			axios.get(url)
 			.then((respoonse) => {
@@ -91,7 +91,7 @@ import axios from 'axios';
 			 .catch((response)=>{
           console.log("job details mein error aa gaya");
         })
-		}*/,
+		}*/
 		/*beforeCreate(){
 			debugger;
 			axios.get('https://authenticjobs.com/api/?api_key=15830df45c0d41fed9dfb46a1a1834bc&method=aj.jobs.search&format=json',{
@@ -316,10 +316,7 @@ import axios from 'axios';
 		display:flex;
 		
 	}
-	 body{
-        background-image: url('../assets/images/bg.jpg');
-        background-repeat: repeat-y;
-      }
+	 
       #surf{
       	padding: 5px;
       	margin: 20px;

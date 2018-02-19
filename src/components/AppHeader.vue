@@ -1,7 +1,11 @@
 <template>
-  <div class="app-header" style = "height:30px">
+  <div class="app-header" style = "height:30px; opacity: 1">
     <b-navbar toggleable="md" type="dark" variant="white" fixed = "top">
-      <router-link to="/home" style="font-size: 30px; color:black" class = "title">Refer<a style="font-size: 30px; color:#42B398" >worthy</a></router-link>
+      <router-link to="/home" style="font-size: 30px; color:black " class = "title">Refer<a style="font-size: 30px; color:#42B398" >worthy</a></router-link>
+      <div class = "jriel">
+              <i class="material-icons work-exp-icon">work</i>  
+              Jobs
+            </div>  
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">  
         <b-button v-show = '!$store.state.loggedIn' size="sm" v-on:click="displayLoginModal()" class="m-2 button2">Sign In</b-button>
@@ -98,8 +102,20 @@ export default {
   }
 </script>
 <style>
+.jriel{
+    display: block;
+    color: #131418;   
+      align-items: center;
+      line-height: 19px;
+      margin-bottom: 5px;
+      opacity: 1;
+  }
+  .jriel: hover{
+    background-color: grey;
+  }
 .title, .title:active, .title:visited, .title:focus  {
     text-decoration:none;
+    margin: 10px;
 }
 .title:hover{
   text-decoration: none;
@@ -115,6 +131,7 @@ export default {
   height:50px;
   opacity: 1;
   margin-bottom: 35px;
+  background-color: #1A1A1E;
 }
 
 .button {

@@ -1,5 +1,5 @@
 <template>
-  <body class="parallax" >
+  <body  >
    <div name="home"  style = "padding-top: 30px;">
       <b-jumbotron bg-variant="white" text-variant="dark"  align="center" class="bg-transparent" style="padding:19px 10px 10px 1px">
         <template slot="header">
@@ -97,7 +97,7 @@ export default {
 
       <style> 
       body{
-        background-image: url('../assets/images/bg.jpg');
+        background-color: #1A1A1E;
         background-repeat: repeat-y;
       }
 

@@ -124,14 +124,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*text-align: center;
-  /*color: #2c3e50;*/
+  background-color: #1A1A1E;*/
   
 }
 .parallax{ 
-  background-color: black/*url("https://s13.postimg.org/qhaau1s2v/rodion-kutsaev-41022_1.jpg")*/; 
+  background-color: #1A1A1E;/*url("https://s13.postimg.org/qhaau1s2v/rodion-kutsaev-41022_1.jpg")*/ 
   /*background-attachment: fixed;*/
   /*background-position: center;*/
-  background-repeat: repeat;
+  background-repeat: repeat-y;
   /*background-size: cover;*/
   /*&:before {*/
     
